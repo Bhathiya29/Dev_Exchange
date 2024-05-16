@@ -11,3 +11,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |	https://codeigniter.com/userguide3/general/hooks.html
 |
 */
+$hook['post_controller_constructor'][] = array(
+    'class'    => '',
+    'function' => 'set_cors_headers',
+    'filename' => 'cors.php',
+    'filepath' => 'hooks',
+    'params'   => array()
+);

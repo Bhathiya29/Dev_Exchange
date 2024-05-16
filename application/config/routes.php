@@ -50,5 +50,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'welcome';
+$route['api/signup'] = 'signup/register';
+$route['api/login'] = 'login/process';
+$route['api/profile'] = 'profile/profile';
+$route['api/posts'] = 'posts/content';
+$route['api/post'] = 'posts/get_single_post';
+$route['api/courses'] = 'courses/get_courses';
+$route['api/like'] = 'posts/like_post';
+$route['api/comment'] = 'posts/create_comment';
+$route['api/create'] = 'posts/create_post';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
