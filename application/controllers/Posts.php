@@ -9,7 +9,7 @@ class Posts extends CI_Controller {
     $this->load->model('PostModel');
     $this->load->model('CommentModel');
 
-    header('Access-Control-Allow-Origin: *'); // Change * to your allowed domain
+    header('Access-Control-Allow-Origin: *'); 
     header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE');
     header('Access-Control-Allow-Headers: Content-Type, Authorization');
     
@@ -28,7 +28,6 @@ class Posts extends CI_Controller {
 
     public function content() {
         $posts = $this->PostModel->get_all_posts();
-        //print_r($posts);
 
         if ($posts) {
             error_log("Posts found: " . count($posts));
@@ -71,7 +70,7 @@ class Posts extends CI_Controller {
       $comments = $this->Comment_model->get_comments_by_post_id($post_id);
       $this->load->view('single_post', ['post' => $post, 'comments' => $comments]);
     } else {
-      // Handle case where post is not found (e.g., show error message)
+      // not handled as its not necessary
     }
   }
 
@@ -111,9 +110,6 @@ class Posts extends CI_Controller {
 
       $result = $this->CommentModel->create_comment($data);
 
-      // Log the result for debugging
-      error_log("Result: " . print_r($result, true));
-
       if ($result) {
         $this->sendSuccessResponse($result);
       } else {
@@ -133,7 +129,6 @@ class Posts extends CI_Controller {
     $userId = isset($data['userID']) ? $data['userID'] : '';
     $userName = isset($data['userName']) ? $data['userName'] : '';
 
-    error_log("Caption: " . $caption . ", Image: " . $image . ", UserID: " . $userId . ", UserName: " . $userName); // Log the form data  
 
     if ($caption && $image && $userId&& $userName) {
       $data = [

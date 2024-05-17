@@ -7,7 +7,7 @@ class Login extends CI_Controller {
 
   public function __construct() {
     parent::__construct();
-    header('Access-Control-Allow-Origin: *'); // Change * to your allowed domain
+    header('Access-Control-Allow-Origin: *'); 
     header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE');
     header('Access-Control-Allow-Headers: Content-Type, Authorization');
     
@@ -21,11 +21,11 @@ class Login extends CI_Controller {
     // Load User_model
     $this->load->model('LoginModel');
     
-    // Check if loading was successful (optional)
+    // Checking if loading was successful 
     if ($this->load->is_loaded('LoginModel')) {
         error_log("Login_model is loaded properly.");
     } else {
-        error_log("Login_model failed to load.");  // More specific error message
+        error_log("Login_model failed to load.");  
     }
 }
 
@@ -33,17 +33,17 @@ class Login extends CI_Controller {
 
 
   public function index() {
-    #$this->load->view('login_view'); // Load the login view
+    // No need as backbone renders the front-end
   }
 
   public function process() {
-     // Get JSON data sent from frontend
+     // Getting JSON data sent from frontend
     $data = json_decode(file_get_contents('php://input'), true);
     // Extract username and password from JSON data
     $username = isset($data['username']) ? $data['username'] : '';
     $password = isset($data['password']) ? $data['password'] : '';
 
-    error_log("Username: " . $username . ", Password: " . $password); // Log the form data
+    error_log("Username: " . $username . ", Password: " . $password); // Logging the form data
 
     // Load the Login model
     $this->load->model('LoginModel');

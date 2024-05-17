@@ -17,12 +17,4 @@ class UserModel extends CI_Model {
             return false;
         }
     }
-    
-    
-
-    //public function register_user($data) {
-        // Insert user data into the database
-        //return $this->db->insert('users', $data);
-    //}
-
 }

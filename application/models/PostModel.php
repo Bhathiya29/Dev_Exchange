@@ -7,16 +7,6 @@ class PostModel extends CI_Model {
   public function __construct() {
     parent::__construct();
   }
-
-  /*
-  public function get_all_posts() {
-    $this->db->select('*');
-    $this->db->from('posts');;
-    $query = $this->db->get();
-    return $query->result_array();
-
-  }*/
-
   
   public function get_post_by_id($post_id) {
     $this->db->select('*');
@@ -27,7 +17,7 @@ class PostModel extends CI_Model {
   }
 
   public function get_all_posts() {
-    // Select all post fields and comments.comment (assuming comment text)
+    // Select all post fields and comments.comment 
     $this->db->select('posts.*, comments.comment');
   
     // Join posts and comments tables on PostID
@@ -81,7 +71,7 @@ class PostModel extends CI_Model {
     $this->db->insert('posts', $data);
     $insert_id = $this->db->insert_id();
 
-    // Get the affected rows (should be 1 if successful update)
+    // Get the affected rows 
     $affected_rows = $this->db->affected_rows();
     
     if ($affected_rows > 0) {
@@ -90,7 +80,7 @@ class PostModel extends CI_Model {
       $this->db->where('PostID', $insert_id);
       $query = $this->db->get('posts');
     
-      // Check if query returned a result (should be 1 row)
+      // Check if query returned a result 
       if ($query->num_rows() === 1) {
       // Return the first row as an array
       return $query->row_array();
@@ -99,7 +89,7 @@ class PostModel extends CI_Model {
       return null;
       }
     } else {
-      // Return null if update failed (affected_rows = 0)
+      // Return null if update failed 
       return null;
     }
     
@@ -114,17 +104,17 @@ class PostModel extends CI_Model {
     $this->db->where('PostID', $postId);
     $this->db->update('posts');
   
-    // Get the affected rows (should be 1 if successful update)
+    // Get the affected rows 
     $affected_rows = $this->db->affected_rows();
   
-    // If update was successful (affected_rows > 0)
+    // If update was successful 
     if ($affected_rows > 0) {
       // Get the updated row using select with same where clause
       $this->db->select('*');
       $this->db->where('PostID', $postId);
       $query = $this->db->get('posts');
   
-      // Check if query returned a result (should be 1 row)
+      // Check if query returned a result 
       if ($query->num_rows() === 1) {
         // Return the first row as an array
         return $query->row_array();
@@ -133,7 +123,7 @@ class PostModel extends CI_Model {
         return null;
       }
     } else {
-      // Return null if update failed (affected_rows = 0)
+      // Return null if update failed 
       return null;
     }
   }
@@ -142,7 +132,7 @@ class PostModel extends CI_Model {
     $this->db->insert('comments', $data);
     $insert_id = $this->db->insert_id();
 
-    // Get the affected rows (should be 1 if successful update)
+    // Get the affected rows 
     $affected_rows = $this->db->affected_rows();
     
     if ($affected_rows > 0) {
@@ -151,7 +141,7 @@ class PostModel extends CI_Model {
       $this->db->where('CommentID', $insert_id);
       $query = $this->db->get('comments');
   
-      // Check if query returned a result (should be 1 row)
+      // Check if query returned a result 
       if ($query->num_rows() === 1) {
         // Return the first row as an array
         return $query->row_array();
@@ -160,7 +150,7 @@ class PostModel extends CI_Model {
         return null;
       }
     } else {
-      // Return null if update failed (affected_rows = 0)
+      // Return null if update failed 
       return null;
     }
   }

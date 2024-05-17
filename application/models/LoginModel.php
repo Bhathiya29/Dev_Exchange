@@ -6,14 +6,11 @@ class LoginModel extends CI_Model {
 
   public function __construct() {
     parent::__construct();
-    // Load database library if needed for user credential check (replace with your actual logic)
-    // $this->load->database();
+   
   }
 
   public function verifyCredentials($username, $password) {
-    // Replace with your actual logic to check username and password against your user data source (e.g., database)
-    // This is a dummy example, replace with your actual validation logic
-    // Build your database query to check username and password against user table
+    // Query the database
     $query = $this->db->get_where('users', array('UserName' => $username));
 
     if ($query->num_rows() > 0) {
@@ -26,12 +23,6 @@ class LoginModel extends CI_Model {
       } else {
         return FALSE; // Password does not match
       }
-    /*
-    if ($username === 'admin' && $password === 'password') {
-      return TRUE;
-    } else {
-      return FALSE;
-    }*/
   }
 }
 public function get_userId($username){

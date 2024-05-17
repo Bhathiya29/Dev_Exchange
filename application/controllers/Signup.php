@@ -26,11 +26,11 @@ class Signup extends CI_Controller {
         // Load User_model
         $this->load->model('UserModel');
         
-        // Check if loading was successful (optional)
+        // Check if loading was successful 
         if ($this->load->is_loaded('UserModel')) {
             error_log("User_model is loaded properly.");
         } else {
-            error_log("User_model failed to load.");  // More specific error message
+            error_log("User_model failed to load.");  
         }
     }
 
@@ -39,15 +39,11 @@ class Signup extends CI_Controller {
     }
 
     public function register() {
-        
-        //$this->load->model('UserModel');
-       // log('Signup controller register method');
 
         // Handle signup form submission
         $data = json_decode(file_get_contents('php://input'), true);
         
-        //error_log('Data: ' . print_r($data, true));
-        // Validate data (you may add more validations as needed)
+        // Validate data 
         if(empty($data['firstname']) || empty($data['lastname']) || empty($data['email']) || empty($data['username']) || empty($data['password']) || empty($data['bio']) || empty($data['dob'])|| empty($data['profilepicture'])) {
             $this->output
                 ->set_content_type('application/json')
@@ -56,11 +52,9 @@ class Signup extends CI_Controller {
             return;
         }
 
-        //error_log($data['firstname']);
         // Save data to database using the model
         $result = $this->UserModel->register_user($data);
 
-        //$result = true;
 
         if($result) {
             // Respond with success message
