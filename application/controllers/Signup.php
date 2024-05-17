@@ -11,7 +11,7 @@ class Signup extends CI_Controller {
     public function __construct() {
         parent::__construct();
     
-        header('Access-Control-Allow-Origin: *'); // Change * to your allowed domain
+        header('Access-Control-Allow-Origin: *'); 
         header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE');
         header('Access-Control-Allow-Headers: Content-Type, Authorization');
     
@@ -48,7 +48,7 @@ class Signup extends CI_Controller {
         
         //error_log('Data: ' . print_r($data, true));
         // Validate data (you may add more validations as needed)
-        if(empty($data['firstname']) || empty($data['lastname']) || empty($data['email']) || empty($data['username']) || empty($data['password']) || empty($data['dob'])) {
+        if(empty($data['firstname']) || empty($data['lastname']) || empty($data['email']) || empty($data['username']) || empty($data['password']) || empty($data['bio']) || empty($data['dob'])|| empty($data['profilepicture'])) {
             $this->output
                 ->set_content_type('application/json')
                 ->set_status_header(400)

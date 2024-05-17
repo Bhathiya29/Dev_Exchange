@@ -33,6 +33,9 @@ class PostModel extends CI_Model {
     // Join posts and comments tables on PostID
     $this->db->from('posts');
     $this->db->join('comments', 'posts.PostID = comments.PostID', 'left'); // Use LEFT JOIN to include posts without comments
+
+    // Order by PostID in descending order
+    $this->db->order_by('posts.PostID', 'DESC');
   
     // Execute the query
     $query = $this->db->get();

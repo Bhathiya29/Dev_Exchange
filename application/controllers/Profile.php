@@ -34,10 +34,11 @@ class Profile extends CI_Controller {
                 'username' => $user['UserName'],
                 'firstname' => $user['FirstName'],
                 'lastname' => $user['LastName'],
+                'bio' => $user['Bio'],  
                 'profile_pic' => $user['ProfilePicture']
             ];
 
-            error_log("userName: " . $userData['username'] . ", firstName: " . $userData['firstname'] . ", lastName: " . $userData['lastname'] . ", profilePic: " . $userData['profile_pic']);
+            error_log("userName: " . $userData['username'] . ", firstName: " . $userData['firstname'] . ", lastName: " . $userData['lastname'] . ", Bio: " . $userData['bio']. ", profilePic: " . $userData['profile_pic']);
 
             // Respond with the user data as JSON
             $this->output
